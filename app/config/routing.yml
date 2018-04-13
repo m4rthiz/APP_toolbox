@@ -1,0 +1,7 @@
+emse_plateform:
+    resource: "@EmsePlateformBundle/Resources/config/routing.yml"
+    prefix:   /plateform
+
+#app:
+#    resource: '@AppBundle/Controller/'
+#    type: annotation

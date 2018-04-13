@@ -1,0 +1,17 @@
+{% extends '@EmsePlateform/layout.html.twig' %}
+{% block title %}Accueil{% endblock %}
+{% block body %}
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
+<h1 class='text-light text-center bg-info'>Annonce n° {{ id }}</h1>
+{#<p>tag : {{ tag }}</p>#}
+
+{% endblock %}

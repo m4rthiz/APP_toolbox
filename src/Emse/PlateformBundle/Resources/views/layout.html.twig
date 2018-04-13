@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}{% endblock %} APP</title>
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>#}
+    {% include '@EmsePlateform/components/head.html.twig' %}
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body class="container-fluid">
+<header>
+    {#<div class="ban">#}
+        {#{% include ':components:ban.html.twig' %}#}
+    {#</div>#}
+    {#{% block navbar %}#}
+        {#{% include ':components:navbar.html.twig' %}#}
+    {#{% endblock %}#}
+</header>
+<div class="row">
+    <section class="aside content col-md-3">
+        {% block navbar %}
+            {% include '@EmsePlateform/components/nav.html.twig' %}
+        {% endblock %}
+    </section>
+    <section class="col-9">
+
+        {% block body %}
+        {% endblock %}
+    </section>
+
+</div>
+<footer>
+    {% include '@EmsePlateform/components/footer.html.twig' %}
+</footer>
+{% block javascripts %}{% endblock %}
+{% include '@EmsePlateform/components/script.html.twig' %}
+</body>
+</html>

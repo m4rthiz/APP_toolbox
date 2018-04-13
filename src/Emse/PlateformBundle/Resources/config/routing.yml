@@ -1,0 +1,32 @@
+#advert_homepage:
+#    path:     /
+#    defaults: { _controller: EmsePlateformBundle:Advert:index }
+
+advert_home:
+    path:     /
+    defaults: { _controller: EmsePlateformBundle:Advert:index }
+
+advert_view:
+    path:     /advert/{id}
+    defaults: { _controller: EmsePlateformBundle:Advert:view }
+
+advert_add:
+    path:     /advert/add
+    defaults: { _controller: EmsePlateformBundle:Advert:add }
+
+advert_edit:
+    path:     /advert/edit/{id}
+    defaults: { _controller: EmsePlateformBundle:Advert:edit }
+
+advert_delete:
+    path:     /advert/delete/{id}
+    defaults: { _controller: EmsePlateformBundle:Advert:delete }
+
+#advert_view_slug:
+#    path:     /advert/{year}/{slug}.{format}
+#    defaults:
+#         _controller: EmsePlateformBundle:Advert:viewSlug
+#         format: html
+#    requirements:
+#        year: \d{4}
+#        format: html|xml
