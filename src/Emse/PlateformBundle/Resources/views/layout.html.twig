@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}{% endblock %} APP</title>
+    <title>{% block title %}{% endblock %}-APP</title>
     {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>#}
     {% include '@EmsePlateform/components/head.html.twig' %}
 
@@ -11,12 +11,9 @@
 </head>
 <body class="container-fluid">
 <header>
-    {#<div class="ban">#}
-        {#{% include ':components:ban.html.twig' %}#}
-    {#</div>#}
-    {#{% block navbar %}#}
-        {#{% include ':components:navbar.html.twig' %}#}
-    {#{% endblock %}#}
+    <div class='jumbotron bg-info'>
+        {% include '@EmsePlateform/components/ban.html.twig' %}
+    </div>
 </header>
 <div class="row">
     <section class="aside content col-md-3">
@@ -24,7 +21,7 @@
             {% include '@EmsePlateform/components/nav.html.twig' %}
         {% endblock %}
     </section>
-    <section class="col-9">
+    <section class="col-9 jumbotron">
 
         {% block body %}
         {% endblock %}

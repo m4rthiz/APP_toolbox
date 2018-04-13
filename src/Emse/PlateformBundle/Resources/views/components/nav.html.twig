@@ -1,8 +1,13 @@
 
     <nav class="nav flex-column">
-        <a class="nav-link active" href="#">menu</a>
-        <a class="nav-link" href="#">menu2</a>
-        <a class="nav-link" href="#">menu3</a>
-        <a class="nav-link" href="#">menu4</a>
+        <h4>Les annonces</h4>
+        <a class="nav-link nav-tabs active" href="#">menu1</a>
+        <a class="nav-link nav-tabs" href="#">menu2</a>
+        <a class="nav-link nav-tabs" href="#">menu3</a>
+        <a class="nav-link nav-tabs" href="#">menu4</a>
+        <h4>Les dernières annonces</h4>
+        {#{{ render(controller('EmsePlateformBundle:Advert:menu', {'limit': 3})) }}#}
+        <a class="nav-link nav-tabs" href="#">menu5</a>
+        <a class="nav-link nav-tabs" href="#">menu6</a>
+        <a class="nav-link nav-tabs" href="#">menu7</a>
     </nav>
->
