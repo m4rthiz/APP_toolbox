@@ -1,0 +1,13 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/menu.html.twig #}
+
+{# Ce template n'hérite de personne,
+
+   tout comme le template inclus avec {{ include() }}. #}
+<nav class="nav flex-column">
+
+    {% for advert in listAdverts %}
+            <a class="nav-link nav-tabs" href="{{ path('advert_view', {'id': advert.id}) }}">
+                {{ advert.title }}
+            </a>
+     {% endfor %}
+</nav>

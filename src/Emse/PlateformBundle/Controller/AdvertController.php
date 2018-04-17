@@ -26,6 +26,22 @@ class AdvertController extends Controller
         return $this->render('@EmsePlateform/Advert/index.html.twig', compact('page'));
     }
 
+    public function menuAction($limit) {
+
+        // On fixe en dur une liste ici, bien entendu par la suite
+        // on la récupérera depuis la BDD !
+        $listAdverts = array(
+            array('id' => 2, 'title' => 'Recherche développeur Symfony'),
+            array('id' => 5, 'title' => 'Mission de webmaster'),
+            array('id' => 9, 'title' => 'Offre de stage webdesigner'),
+        );
+
+        return $this->render('@EmsePlateform/Advert/menu.html.twig', array(
+                      'listAdverts' => $listAdverts,
+        ));
+    }
+
+
     public function viewAction($id, Request $request) {
         $session = $request->getSession();
         $userId = $session->set('user_id', 19);
@@ -36,13 +52,13 @@ class AdvertController extends Controller
 
     public function addAction(Request $request) {
 
-        if ($request->isMethod('POST')) {
-            $session = $request->getSession();
-            $session->getFlashbag()
-                    ->add('info', 'ok ok ok');
-
-            return $this->redirectToRoute('advert_view', array('id' => 5));
-        }
+//        if ($request->isMethod('POST')) {
+//            $session = $request->getSession();
+//            $session->getFlashbag()
+//                    ->add('info', 'ok ok ok');
+//
+//            return $this->redirectToRoute('advert_view', array('id' => 5));
+//        }
 
         return $this->render('@EmsePlateform/Advert/add.html.twig');
     }
@@ -62,7 +78,7 @@ class AdvertController extends Controller
 
     public function deleteAction(Request $request) {
 
-       return $this->render('@EmsePlateform/Advert/delete.html.twig');
+        return $this->render('@EmsePlateform/Advert/delete.html.twig');
     }
 
 //    public function viewSlugAction($year, $slug, $format) {

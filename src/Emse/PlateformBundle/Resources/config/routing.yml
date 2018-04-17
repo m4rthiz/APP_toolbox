@@ -7,7 +7,7 @@ advert_home:
     defaults: { _controller: EmsePlateformBundle:Advert:index }
 
 advert_view:
-    path:     /advert/{id}
+    path:     /advert/view/{id}
     defaults: { _controller: EmsePlateformBundle:Advert:view }
 
 advert_add:
