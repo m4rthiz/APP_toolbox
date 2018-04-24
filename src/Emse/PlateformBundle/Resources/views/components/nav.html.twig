@@ -3,7 +3,7 @@
         <h4>Les annonces</h4>
         <a class="nav-link nav-tabs active" href="{{ path('advert_home') }}">accueil</a>
         <a class="nav-link nav-tabs" href="{{ path('advert_add') }}">Ajouter une annonce</a>
-        <a class="nav-link nav-tabs" href="">voir les annonces</a>
+        <a class="nav-link nav-tabs" href="{{ path('advert_home') }}">voir les annonces</a>
         <a class="nav-link nav-tabs" href="#">menu4</a>
         <h4>Les dernières annonces</h4>
         {{ render(controller('EmsePlateformBundle:Advert:menu', {'limit': 3})) }}

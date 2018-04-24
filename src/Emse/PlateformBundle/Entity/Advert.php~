@@ -15,9 +15,13 @@ class Advert
 {
 
     public function __construct()
+
     {
+
+        // Par défaut, la date de l'annonce est la date d'aujourd'hui
         $this->date = new \Datetime();
         $this->published = true;
+
     }
 
     /**
@@ -63,7 +67,9 @@ class Advert
     private $published;
 
     /**
+
      * @ORM\OneToOne(targetEntity="Image", cascade={"persist"})
+
      */
 
     private $image;

@@ -5,9 +5,14 @@
 
 <h2 class='text-info text-center '> Site d'annonce !</h2>
     <div id="menu">
-        {{ render(controller('EmsePlateformBundle:Advert:menu', {'limit': 3})) }}
-
+        {#{{ render(controller('EmsePlateformBundle:Advert:menu', {'limit': 3})) }}#}
+        {% for advert in adverts %}
+            <a class="nav-link nav-tabs" href="{{ path('advert_view', {'id': advert.id}) }}">
+                {{ advert.title }}
+            </a>
+        {% endfor %}
     </div>
+
 
 
 {#<a href='{{ path('advert_home')}}'>#}
