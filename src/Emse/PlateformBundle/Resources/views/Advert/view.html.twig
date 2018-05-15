@@ -16,6 +16,7 @@
     {% if advert.image is not null %}
         <img class='col-3' src="{{ advert.image.url }}" alt="{{ advert.image.alt }}">
     {% endif %}
+
     <h2 class='col9'>{{ advert.title }}</h2>
 
     <p class='col-12'>{{ advert.content }}</p>

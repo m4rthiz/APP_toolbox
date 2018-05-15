@@ -13,21 +13,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AdvertController extends Controller
 {
-//    public function indexAction() {
-//
-//        $nom = 'm4r';
-//        $prenom = 'thiz';
-//
-//        return $this->render('@EmsePlateform/Advert/index.html.twig', compact('nom', 'prenom'));
-////        return new Response('Notre reponse sans style :-(');
-//    }
+
 
     public function indexAction() {
-//        if ($page < 1){
-//            throw new notFoundHttpException('page ' . $page . ' not found');
-//        }
-        $em = $this->getDoctrine()->getManager();
-        $adverts = $em->getRepository('Emse\PlateformBundle\Entity\Advert')->findAll();
+
+        $em = $this->getDoctrine()
+                   ->getManager();
+        $adverts = $em->getRepository('Emse\PlateformBundle\Entity\Advert')
+                      ->findAll();
+
         return $this->render('@EmsePlateform/Advert/index.html.twig', compact('page', 'adverts'));
     }
 
@@ -42,32 +36,28 @@ class AdvertController extends Controller
         );
 
         return $this->render('@EmsePlateform/Advert/menu.html.twig', array(
-                      'listAdverts' => $listAdverts,
+            'listAdverts' => $listAdverts,
         ));
     }
 
-
     public function viewAction($id, Request $request) {
-        $em = $this->getDoctrine()->getManager();
-        $advert = $em->getRepository('Emse\PlateformBundle\Entity\Advert')->find($id);
+        $em = $this->getDoctrine()
+                   ->getManager();
+        $advert = $em->getRepository('Emse\PlateformBundle\Entity\Advert')
+                     ->find($id);
 
         if (null === $advert) {
-            throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+            throw new NotFoundHttpException("L'annonce d'id " . $id . " n'existe pas.");
         }
 
-        $listApplications = $em->getRepository('Emse\PlateformBundle\Entity\Application')->findBy(array('advert' => $advert));
+        $listApplications = $em->getRepository('Emse\PlateformBundle\Entity\Application')
+                               ->findBy(array('advert' => $advert));
 
         return $this->render('@EmsePlateform/Advert/view.html.twig', array(
 
             'advert' => $advert,
-            'listApplications' => $listApplications
-
+            'listApplications' => $listApplications,
         ));
-//        $session = $request->getSession();
-//        $userId = $session->set('user_id', 19);
-//
-//        return $this->render('@EmsePlateform/Advert/view.html.twig', compact('id'));
-
     }
 
     public function addAction(Request $request) {
@@ -83,8 +73,6 @@ class AdvertController extends Controller
         $image->setAlt('Job de rêve');
         $advert->setImage($image);
 
-// Création d'une première candidature
-
         $application1 = new Application();
         $application1->setAuthor('Marine');
         $application1->setContent("J'ai toutes les qualités requises.");
@@ -96,16 +84,18 @@ class AdvertController extends Controller
         $application1->setAdvert($advert);
         $application2->setAdvert($advert);
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()
+                   ->getManager();
         $em->persist($advert);
         $em->persist($application1);
         $em->persist($application2);
-
         $em->flush();
 
-
         if ($request->isMethod('POST')) {
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+            $request->getSession()
+                    ->getFlashBag()
+                    ->add('notice', 'Annonce bien enregistrée.');
+
             return $this->redirectToRoute('advert_view', array('id' => $advert->getId()));
         }
 
@@ -113,7 +103,6 @@ class AdvertController extends Controller
         return $this->render('@EmsePlateform/Advert/add.html.twig', array('advert' => $advert));
 
     }
-
 
     public function editAction(Request $request) {
 
@@ -133,7 +122,6 @@ class AdvertController extends Controller
         return $this->render('@EmsePlateform/Advert/delete.html.twig');
     }
 
-
     public function editImageAction($advertId) {
         $em = $this->getDoctrine()
                    ->getManager();
@@ -143,10 +131,7 @@ class AdvertController extends Controller
         // On modifie l'URL de l'image par exemple
         $advert->getImage()
                ->setUrl('test.png');
-        // On n'a pas besoin de persister l'annonce ni l'image.
-        // Rappelez-vous, ces entités sont automatiquement persistées car
-        // on les a récupérées depuis Doctrine lui-même
-        // On déclenche la modification
+
         $em->flush();
 
         return new Response('OK');
